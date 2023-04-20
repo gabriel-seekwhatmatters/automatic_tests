@@ -14,8 +14,6 @@ class HomePage:
 
 
     def create_new_report(self, name, details):
-        # wait = WebDriverWait(self.driver, 10)
-        # element = wait.until(EC.visibility_of_element_located(By.CSS_SELECTOR, 'div.MuiBox-root.css-1ykox53 > button:nth-child(2) > svg'))
         open_create_item_modal = self.driver.find_element(By.CSS_SELECTOR, 'div.MuiBox-root.css-1ykox53 > button:nth-child(2) > svg').click()
         select_stack_option = self.driver.find_element(By.CSS_SELECTOR, '[aria-label="Create Item tabs"] [id="simple-tab-1"]').click()
         type_report_name = self.driver.find_element(By.CSS_SELECTOR, '[placeholder="Stack Title"]').send_keys(name)
