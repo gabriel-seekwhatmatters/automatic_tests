@@ -38,6 +38,3 @@ def test_brainstorm():
     # Clean box
     time.sleep(10)
     home_page.clean_text()
-
-
-    time.sleep(200)
