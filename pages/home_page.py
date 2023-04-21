@@ -1,6 +1,6 @@
 import time
 
-from selenium.webdriver import Keys
+from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -14,8 +14,6 @@ class HomePage:
 
 
     def create_new_report(self, name, details):
-        # wait = WebDriverWait(self.driver, 10)
-        # element = wait.until(EC.visibility_of_element_located(By.CSS_SELECTOR, 'div.MuiBox-root.css-1ykox53 > button:nth-child(2) > svg'))
         open_create_item_modal = self.driver.find_element(By.CSS_SELECTOR, 'div.MuiBox-root.css-1ykox53 > button:nth-child(2) > svg').click()
         select_stack_option = self.driver.find_element(By.CSS_SELECTOR, '[aria-label="Create Item tabs"] [id="simple-tab-1"]').click()
         type_report_name = self.driver.find_element(By.CSS_SELECTOR, '[placeholder="Stack Title"]').send_keys(name)
@@ -60,13 +58,16 @@ class HomePage:
         #                     'div.margin-view-overlays > div:nth-child(1) > div.cldr.alwaysShowFoldIcons.codicon.codicon-folding-expanded')
         # box.click()
 
-        row = self.driver.find_element(By.CSS_SELECTOR,'div:nth-child(2) > span > span')
-        row.click()
+        row = self.driver.find_element(By.CSS_SELECTOR,'div:nth-child(2) > span > span').click()
+        row = self.driver.find_element(By.CSS_SELECTOR,'div:nth-child(3) > span > span').click()
+        row = self.driver.find_element(By.CSS_SELECTOR,'div:nth-child(4) > span > span').click()
 
         time.sleep(5)
         # row.send_keys(Keys.CONTROL, 'a')
         # time.sleep(10)
-        row.send_keys(Keys.DELETE)
+        t = self.driver.find_element(By.CSS_SELECTOR, 'div:nth-child(4) > span > span').send_keys(Keys.BACK_SPACE)
+        t = self.driver.find_element(By.CSS_SELECTOR, '.overflow-guard').send_keys(Keys.F1)
+
         time.sleep(10)
 
 
