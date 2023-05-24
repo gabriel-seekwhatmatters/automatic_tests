@@ -2,10 +2,6 @@ import time
 
 from selenium.webdriver import Keys
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support.wait import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-
-
 
 class HomePage:
 
@@ -14,13 +10,11 @@ class HomePage:
 
 
     def create_new_report(self, name, details):
-        # wait = WebDriverWait(self.driver, 10)
-        # element = wait.until(EC.visibility_of_element_located(By.CSS_SELECTOR, 'div.MuiBox-root.css-1ykox53 > button:nth-child(2) > svg'))
-        open_create_item_modal = self.driver.find_element(By.CSS_SELECTOR, 'div.MuiBox-root.css-1ykox53 > button:nth-child(2) > svg').click()
-        select_stack_option = self.driver.find_element(By.CSS_SELECTOR, '[aria-label="Create Item tabs"] [id="simple-tab-1"]').click()
-        type_report_name = self.driver.find_element(By.CSS_SELECTOR, '[placeholder="Stack Title"]').send_keys(name)
-        type_details = self.driver.find_element(By.CSS_SELECTOR, '[placeholder="Type stack details here"]').send_keys(details)
-        create_report_button = self.driver.find_element(By.CSS_SELECTOR, '#simple-tabpanel-1 button').click()
+        self.driver.find_element(By.CSS_SELECTOR, '.css-1ykox53 > button > svg').click()
+        self.driver.find_element(By.CSS_SELECTOR, '[aria-label="Create Item tabs"] [id="simple-tab-1"]').click()
+        self.driver.find_element(By.CSS_SELECTOR, '[placeholder="Stack Title"]').send_keys(name)
+        self.driver.find_element(By.CSS_SELECTOR, '[placeholder="Type stack details here"]').send_keys(details)
+        self.driver.find_element(By.CSS_SELECTOR, '#simple-tabpanel-1 button').click()
 
 
     def get_report_position(self):
@@ -45,27 +39,24 @@ class HomePage:
 
     def create_new_question(self,name):
         self.driver.refresh()
-        wait = WebDriverWait(self.driver, 10)
-        element = wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR, 'div.MuiBox-root.css-1ykox53 > button:nth-child(2) > svg')))
-        open_create_item_modal = self.driver.find_element(By.CSS_SELECTOR,'div.MuiBox-root.css-1ykox53 > button:nth-child(2) > svg').click()
-        type_question_name = self.driver.find_element(By.CSS_SELECTOR, '[placeholder="Type your question here"]').send_keys(name)
-        select_report = self.driver.find_element(By.CSS_SELECTOR, 'ul > div:nth-child(6) input').click()
-        create_button = self.driver.find_element(By.CSS_SELECTOR, '#simple-tabpanel-0 > div > button').click()
+        time.sleep(10)
+        self.driver.find_element(By.CSS_SELECTOR,'.css-1ykox53 > button > svg').click()
+        time.sleep(5)
+        self.driver.find_element(By.CSS_SELECTOR, '.MuiPaper-root [type="text"]').send_keys(name)
+        time.sleep(10)
+        self.driver.find_element(By.CSS_SELECTOR, 'ul > div:nth-child(5) input').click()
+        time.sleep(5)
+        self.driver.find_element(By.CSS_SELECTOR, '#simple-tabpanel-0 > div > button').click()
+        time.sleep(15)
 
     def regenerate_question(self):
-        press_regenerate_question = self.driver.find_element(By.CSS_SELECTOR, 'section > div.MuiBox-root.css-1cdb226 > button').click()
+        self.driver.find_element(By.CSS_SELECTOR, 'section > div.MuiBox-root.css-1cdb226 > button').click()
 
     def clean_text(self):
-        # box = self.driver.find_element(By.CSS_SELECTOR,
-        #                     'div.margin-view-overlays > div:nth-child(1) > div.cldr.alwaysShowFoldIcons.codicon.codicon-folding-expanded')
-        # box.click()
-
-        row = self.driver.find_element(By.CSS_SELECTOR,'div:nth-child(2) > span > span')
+        row = self.driver.find_element(By.CSS_SELECTOR,'.view-lines')
         row.click()
 
         time.sleep(5)
-        # row.send_keys(Keys.CONTROL, 'a')
-        # time.sleep(10)
         row.send_keys(Keys.DELETE)
         time.sleep(10)
 
