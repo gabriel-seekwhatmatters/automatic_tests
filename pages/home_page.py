@@ -1,6 +1,5 @@
 import time
 
-from selenium.webdriver import Keys
 from selenium.webdriver.common.by import By
 
 class HomePage:
@@ -52,12 +51,7 @@ class HomePage:
     def regenerate_question(self):
         self.driver.find_element(By.CSS_SELECTOR, 'section > div.MuiBox-root.css-1cdb226 > button').click()
 
-    def clean_text(self):
-        row = self.driver.find_element(By.CSS_SELECTOR,'.view-lines')
-        row.click()
-
-        time.sleep(5)
-        row.send_keys(Keys.DELETE)
-        time.sleep(10)
+    def press_verify_button(self):
+        self.driver.find_element(By.CSS_SELECTOR, '[class="check square icon"]').click()
 
 
