@@ -54,4 +54,7 @@ class HomePage:
     def press_verify_button(self):
         self.driver.find_element(By.CSS_SELECTOR, '[class="check square icon"]').click()
 
+    def press_mark_as_answered_button(self):
+        self.driver.find_element(By.CSS_SELECTOR, '.MuiButton-text.MuiButton-textPrimary.MuiButton-sizeMedium.MuiButton-textSizeMedium.css-1nc9yro > span').click()
+
 
