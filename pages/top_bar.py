@@ -19,3 +19,6 @@ class TopBar:
     def logout_admin(self):
         self.driver.find_element(By.CSS_SELECTOR, '[class="power off icon"]').click()
         time.sleep(5)
+
+    def open_question_search_tab_admin(self):
+        self.driver.find_element(By.CSS_SELECTOR, '[href="/admin/question-search"]').click()
